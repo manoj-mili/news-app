@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="action"
+            type="com.mili.news.ui.news.list.NewsClickInterface" />
+
+        <variable
+            name="news"
+            type="com.mili.news.data.entities.NewsArticle" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_Container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="4dp"
+        app:cardUseCompatPadding="true"
+        setVisibleAnimation="@{cvContainer}"
+        app:cardBackgroundColor="@color/cardBgColor"
+        >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="@{()-> action.onNewsClick(news) }"
+        >
+
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            app:cardCornerRadius="12dp"
+            android:layout_weight="0.25">
+
+            <ProgressBar
+                android:id="@+id/iv_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true" />
+
+            <ImageView
+                imageProgress="@{ivProgress}"
+                imageUrl="@{news.image}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/news_image"
+                android:scaleType="centerCrop" />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="0.75"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{news.title}"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:fontFamily="@font/helvetica_neue_med"
+                android:textColor="@android:color/black"
+                tools:text="Covid-19 lockdown likely to be extended till April 30 with tweaked restrictions" />
+
+            <TextView
+                publishedTime="@{news.published}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/helvetica_neue_lt"
+                android:textColor="@android:color/black"
+                tools:text="3 Days Ago" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

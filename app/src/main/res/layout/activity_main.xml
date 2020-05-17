@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="news"
+            type="com.mili.news.data.entities.NewsArticle" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.news.list.MainActivity">
+
+        <!--<com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            appBarVisibilityAnimation="@{news}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:contentScrim="@android:color/transparent"
+                android:paddingBottom="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/drawable_shadow">
+
+                        <ProgressBar
+                            android:id="@+id/iv_progress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:indeterminate="true" />
+
+                        <ImageView
+                            imageProgress="@{ivProgress}"
+                            imageUrl="@{news.image}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxHeight="180dp"
+                            android:minHeight="160dp"
+                            android:scaleType="centerCrop" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|end"
+                            android:gravity="end"
+                            android:padding="8dp"
+                            android:background="#03000000"
+                            android:text="@{news.source.toLowerCase().contains(news.author.toLowerCase()) ? news.source: news.author +` - `+ news.source}"
+                            android:textColor="@android:color/white" />
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="end"
+                            android:layout_margin="8dp"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/ic_share"
+                            />
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="start"
+                            android:layout_margin="8dp"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/ic_close"
+                            />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:fontFamily="@font/helvetica_neue_med"
+                        android:letterSpacing="0.01"
+                        android:padding="8dp"
+                        android:text="@{news.title}"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        tools:text="Covid-19 lockdown likely to be extended till April 30 with tweaked restrictions" />
+
+                    <TextView
+                        spannableText="@{news}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:fontFamily="@font/helvetica_neue_lt"
+                        android:letterSpacing="0.02"
+                        android:padding="8dp"
+                        android:textColor="@android:color/black"
+                        tools:text="Covid-19 lockdown likely to be extended till April 30 with tweaked restrictions" />
+                </LinearLayout>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>-->
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:tabIndicator="@null"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@color/colorAccent" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

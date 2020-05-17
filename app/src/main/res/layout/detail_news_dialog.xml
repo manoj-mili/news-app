@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="news"
+            type="com.mili.news.data.entities.NewsArticle" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="12dp"
+        app:cardUseCompatPadding="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+                app:cardCornerRadius="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/iv_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:indeterminate="true" />
+
+                <ImageView
+                    imageProgress="@{ivProgress}"
+                    imageUrl="@{news.image}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxHeight="180dp"
+                    android:minHeight="160dp"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:background="#03000000"
+                    android:gravity="end"
+                    android:padding="8dp"
+                    android:text="@{news.source.toLowerCase().contains(news.author.toLowerCase()) ? news.source: news.author +` - `+ news.source}"
+                    android:textColor="@android:color/white" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="end"
+                    android:layout_margin="8dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_share" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="start"
+                    android:layout_margin="8dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_close" />
+
+            </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="-8dp"
+                android:layout_marginEnd="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        tools:text="Covid-19 lockdown likely to be extended till April 30 with tweaked restrictions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:fontFamily="@font/helvetica_neue_med"
+                        android:letterSpacing="0.01"
+                        android:padding="8dp"
+                        android:text="@{news.title}"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        spannableText="@{news}"
+                        tools:text="Covid-19 lockdown likely to be extended till April 30 with tweaked restrictions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:letterSpacing="0.02"
+                        android:padding="8dp"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
